@@ -6,8 +6,9 @@
 
 /******************************************Include Header Files*/
 #include "common.h"
+#include "utils.h"
 /******************************************Static Globals*/
-#define HT_MAX_SIZE                        53
+#define HT_INIT_SIZE                       0
 
 /******************************************Structres*/
 /* Structure for key-value pair */
@@ -18,13 +19,26 @@ typedef struct {
 
 /* Structure for key-value pair array and its details */
 typedef struct {
-    int size;
-    int count;
+    INT32 base_size;
+    INT32 size;
+    INT32 count;
     HT_ITEM** items;
 } HT_HASH_TABLE;
 
 /******************************************API declarations*/
 HT_HASH_TABLE * ht_new();
 void ht_del_hash_table(HT_HASH_TABLE* ht);
+API_RESULT ht_insert
+           (
+                HT_HASH_TABLE   * ht,
+                DECL_CONST CHAR * key,
+                DECL_CONST CHAR * value
+           );
+API_RESULT ht_search
+           (
+                /* IN */  HT_HASH_TABLE   *  ht,
+                /* IN */  DECL_CONST CHAR *  key,
+                /* OUT */ CHAR            ** value
+           );
 
 #endif /* HASH_TABLE_H */

@@ -13,15 +13,15 @@ SRC_PATH = ../source
 
 # Source files
 SRCS = hash_table.c \
+	   utils.c      \
        appl_main.c
 
 # Include directories
 INCLUDES = -I../source
 
 # Object files
-OBJS = hash_table.o \
-       appl_main.o
-#$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
+
 
 # Executable
 TARGET = HT_test
